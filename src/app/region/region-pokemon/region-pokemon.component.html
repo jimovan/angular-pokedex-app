@@ -1,0 +1,7 @@
+<h1 style="color: green">pokemon-list works!</h1>
+<ul>
+  <li *ngFor="let p of pokemon">
+    {{ p.id }} :
+    <a routerLink="/pokemon/{{ p.id }}">{{ p.name }}</a>
+  </li>
+</ul>
