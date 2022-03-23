@@ -1,7 +1,13 @@
-<h1 style="color: darkorchid">region-list works!</h1>
-<ul>
-  <li *ngFor="let region of regions">
-    {{ region.id }} :
-    <a routerLink="/region-pokemon/{{ region.id }}">{{ region.name }}</a>
-  </li>
-</ul>
+<div class="region__container">
+  <h2 class="region__title">Regions</h2>
+
+  <div class="region__grid">
+    <div
+      class="region__card"
+      routerLink="/region-pokemon/{{ region.id }}"
+      *ngFor="let region of regions"
+    >
+      <span>{{ region.name }}</span>
+    </div>
+  </div>
+</div>

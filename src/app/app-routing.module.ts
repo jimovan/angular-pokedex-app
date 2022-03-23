@@ -5,6 +5,7 @@ import { PokemonComponent } from './pokemon/pokemon/pokemon.component';
 import { RegionListComponent } from './region/region-list/region-list.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/regions', pathMatch: 'full' },
   { path: 'regions', component: RegionListComponent },
   { path: 'region-pokemon/:id', component: RegionPokemonComponent },
   { path: 'pokemon/:id', component: PokemonComponent },
