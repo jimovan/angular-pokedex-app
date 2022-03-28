@@ -1,7 +1,19 @@
-<h1 style="color: green">pokemon-list works!</h1>
-<ul>
-  <li *ngFor="let p of pokemon">
-    {{ p.id }} :
-    <a routerLink="/pokemon/{{ p.id }}">{{ p.name }}</a>
-  </li>
-</ul>
+<div class="rg-pkmn__container">
+  <h1>Region Pokemon</h1>
+
+  <div class="rg-pkmn__grid">
+    <div
+      class="rg-pkmn__card type-colour--{{ p.types[0].type.name }}"
+      routerLink="/pokemon/{{ p.id }}"
+      *ngFor="let p of pokemon"
+    >
+      <img
+        src="{{ p.sprites.other['official-artwork'].front_default }}"
+        alt=""
+        width="150px"
+        class="rg-pkmn__image"
+      />
+      <span>{{ p.name }}</span>
+    </div>
+  </div>
+</div>
