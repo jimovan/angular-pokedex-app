@@ -1,5 +1,5 @@
 <div class="rg-pkmn__container">
-  <h1>Region Pokemon</h1>
+  <h1>{{ region.name }} Pokemon</h1>
 
   <div class="rg-pkmn__grid">
     <div
@@ -13,7 +13,9 @@
         width="150px"
         class="rg-pkmn__image"
       />
-      <span>{{ p.name }}</span>
+      <span>{{ p.name | titlecase }}</span>
     </div>
   </div>
+
+  <button (click)="nextPage()">Next</button>
 </div>
