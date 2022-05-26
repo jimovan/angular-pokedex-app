@@ -7,6 +7,6 @@ export const REGIONS: Region[] = [
   { id: 4, name: 'Sinnoh', startIndex: 387, endIndex: 493 }, // 387-493
   { id: 5, name: 'Unova', startIndex: 494, endIndex: 649 }, // 494-649
   { id: 6, name: 'Kalos', startIndex: 650, endIndex: 721 }, // 650-721
-  { id: 7, name: 'Alola', startIndex: 721, endIndex: 809 }, // 722-809
+  { id: 7, name: 'Alola', startIndex: 722, endIndex: 809 }, // 722-809
   { id: 8, name: 'Galar', startIndex: 810, endIndex: 898 }, // 810-898 }
 ];

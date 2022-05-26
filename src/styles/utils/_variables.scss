@@ -15,8 +15,13 @@ $typeColours: (
   "normal": #f5f5f5,
 );
 
-@each $colour-name, $colour-value in $typeColours {
-  .type-colour--#{$colour-name} {
+@each $colour-name,
+$colour-value in $typeColours {
+  .type-colour-#{$colour-name} {
     background-color: $colour-value;
+  }
+
+  .type-border-colour-#{$colour-name} {
+    border: 5px solid darken($colour-value, 20%)
   }
 }

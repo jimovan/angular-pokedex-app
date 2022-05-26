@@ -1,10 +1,9 @@
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding: 2rem;
-  background-color: #bcccee;
-
-  border-radius: 0.4rem;
+  background-color: #b5b5b5;
   max-width: 23.4375rem;
   margin: auto;
   overflow: hidden;
@@ -12,9 +11,5 @@
   @media only screen and (min-width: 56.25rem) {
     flex-direction: row;
     max-width: 75rem;
-  }
-
-  > * {
-    padding: 1rem;
   }
 }

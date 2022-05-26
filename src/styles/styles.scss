@@ -5,8 +5,8 @@ header {
   background-color: red;
   color: gold;
   width: 100%;
-
-  h1 {
-    text-align: center;
-  }
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

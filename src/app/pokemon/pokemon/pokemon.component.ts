@@ -25,8 +25,7 @@ export class PokemonComponent implements OnInit {
 
     this.pokemonService.getPokemonById(id).subscribe((pokemon: any) => {
       this.pokemon = pokemon;
-      this.pokemonImage =
-        pokemon.sprites.other['official-artwork'].front_default;
+      this.pokemonImage = pokemon.sprites.other['official-artwork'].front_default;
     });
   }
 }

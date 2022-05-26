@@ -12,8 +12,8 @@ import { forkJoin } from 'rxjs';
 export class RegionPokemonComponent implements OnInit {
   pokemon: any[] = [];
   region!: Region;
-  pageLimit: number = 10;
-  currentPage: number = 1;
+  pageLimit: number = 9;
+  pageIndex: number = 1;
 
   constructor(
     private pokemonService: PokemonService,
@@ -21,17 +21,31 @@ export class RegionPokemonComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getPokemon();
+    this.getRegion();    
   }
 
-  getPokemon(startIndex: number = 0): void {
+  getRegion(): void{
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.pokemonService.getRegionById(id).subscribe((region: Region) => {
       this.region = region;
+      this.pageIndex = this.region.startIndex
 
-      this.pokemonService
-        .getPokemonList(this.region.startIndex, this.pageLimit)
+      this.getPokemon(this.region.startIndex);
+      
+    });    
+  }
+
+  getPokemon(startIndex: number): void {
+
+    let pageLimit = this.pageLimit;
+
+    if((this.pageIndex + this.pageLimit) > this.region.endIndex) {
+      pageLimit = this.region.endIndex - startIndex;
+    }
+
+    this.pokemonService
+        .getPokemonList(startIndex, pageLimit)
         .subscribe((response: any) => {
           let pokemonRequest = response.results.map((result: any) => {
             return this.pokemonService.getPokemonByUrl(result.url);
@@ -39,15 +53,22 @@ export class RegionPokemonComponent implements OnInit {
 
           forkJoin(pokemonRequest).subscribe((pokemon) => {
             this.pokemon = pokemon;
-            this.sortPokemon();
+            this.sortPokemon();            
           });
         });
-    });
   }
 
   sortPokemon(): void {
     this.pokemon.sort((first, second) => first.id - second.id);
   }
 
-  nextPage(): void {}
+  nextPage(): void {
+    this.pageIndex += this.pageLimit;
+    this.getPokemon(this.pageIndex);
+  }
+
+  previousPage(): void {
+    this.pageIndex -= this.pageLimit;
+    this.getPokemon(this.pageIndex);
+  }
 }

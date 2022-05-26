@@ -1,21 +1,27 @@
-<div class="rg-pkmn__container">
+<div class="loader" *ngIf="pokemon.length <= 0"></div>
+<div class="rg-pkmn__container" *ngIf="pokemon.length > 0">
   <h1>{{ region.name }} Pokemon</h1>
 
   <div class="rg-pkmn__grid">
     <div
-      class="rg-pkmn__card type-colour--{{ p.types[0].type.name }}"
+      class="rg-pkmn__card type-colour-{{ p.types[0].type.name }} type-border-colour-{{ p.types[0].type.name }}"
       routerLink="/pokemon/{{ p.id }}"
       *ngFor="let p of pokemon"
     >
+      <div class="rg-pkmn__card-title">
+        <h4>{{ p.name | titlecase }}</h4>
+        <span>#{{ ("000" + p.id).slice(-3) }}</span>
+      </div>
       <img
         src="{{ p.sprites.other['official-artwork'].front_default }}"
         alt=""
         width="150px"
         class="rg-pkmn__image"
       />
-      <span>{{ p.name | titlecase }}</span>
+      <span class="rg-pkm__card-desc">Type: <b>{{ p.types[0].type.name | titlecase }}</b></span>
     </div>
   </div>
 
-  <button (click)="nextPage()">Next</button>
+  <button (click)="previousPage()" *ngIf="pageIndex > pageLimit">Previous</button>
+  <button (click)="nextPage()" *ngIf="(pageIndex + pageLimit) < region.endIndex">Next</button>
 </div>

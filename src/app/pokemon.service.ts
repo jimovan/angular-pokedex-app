@@ -22,7 +22,7 @@ export class PokemonService {
     return of(region);
   }
 
-  getPokemonList(offset: number, limit: number = 10): Observable<any> {
+  getPokemonList(offset: number, limit: number = 9): Observable<any> {
     return this.http.get(
       `${this.pokeApiUrl}?limit=${limit}&offset=${offset - 1}`
     );
